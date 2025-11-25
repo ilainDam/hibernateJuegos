@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:rawg_sqlite.db</property>
+        <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
+
+
+
+
+        <!--
+        hbm2ddl.auto valores posibles:
+        - none: no realiza cambios en la BD
+        - validate: valida la estructura sin modificarla
+        - update: actualiza tablas existentes (mantiene datos)
+        - create: crea todo desde cero cada ejecución
+        - create-drop: crea y borra al finalizar
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <mapping class="org.example.model.Archivements"/>
+        <mapping class="org.example.model.Genres"/>
+        <mapping class="org.example.model.Games"/>
+        <mapping class="org.example.model.Platforms"/>
+    </session-factory>
+</hibernate-configuration>
