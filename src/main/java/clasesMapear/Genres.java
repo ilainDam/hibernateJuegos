@@ -1,8 +1,9 @@
 package clasesMapear;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "genres")
 public class Genres {
@@ -11,4 +12,10 @@ public class Genres {
     Integer id;
     @Column(name = "name")
     String name;
+    @ManyToMany(mappedBy = "genres")
+    @JoinTable(name = "gamesgenres",
+            joinColumns = @JoinColumn(name = "genres_id"),
+            inverseJoinColumns = @JoinColumn(name = "raza_id")
+    )
+    private List<Games> gamesList = new ArrayList<>();
 }

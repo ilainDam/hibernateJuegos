@@ -1,9 +1,6 @@
 package clasesMapear;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,8 +19,9 @@ public class Games {
     Date relesaded_date;
     @Column(name = "rating")
     Double rating;
+    @ManyToMany(mappedBy = "games")
+    private List<Genres> genresList=new ArrayList<>();
     @OneToMany(mappedBy = "games")
-    private  List<Archivements> archivementsList = new ArrayList<>() {
-    };
+    private  List<Archivements> archivementsList = new ArrayList<>();
 
 }
