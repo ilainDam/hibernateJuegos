@@ -2,26 +2,105 @@ package clasesMapear;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 @Table(name = "games")
 public class Games {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
     @Column(name = "slug")
-    String slug;
+    private String slug;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "released_date")
-    Date relesaded_date;
+    private Date releasedDate;
     @Column(name = "rating")
-    Double rating;
-    @ManyToMany(mappedBy = "games")
-    private List<Genres> genresList=new ArrayList<>();
-    @OneToMany(mappedBy = "games")
-    private  List<Archivements> archivementsList = new ArrayList<>();
+    private Double rating;
+    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "juego")
+    private List<Achivements> archivements;
+    @ManyToMany(mappedBy = "juegos")
+    private List<Platforms> plataformas;
+    @ManyToMany(mappedBy = "juegos")
+    private List<Genres> generos;
 
+    public Games() {
+    }
+
+    public Games(Integer id, String slug, String name, Date releasedDate, Double rating, List<Achivements> archivements, List<Platforms> plataformas, List<Genres> generos) {
+        this.id = id;
+        this.slug = slug;
+        this.name = name;
+        this.releasedDate = releasedDate;
+        this.rating = rating;
+        this.archivements = archivements;
+        this.plataformas = plataformas;
+        this.generos = generos;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getReleasedDate() {
+        return releasedDate;
+    }
+
+    public void setReleasedDate(Date releasedDate) {
+        this.releasedDate = releasedDate;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
+    public List<Achivements> getArchivements() {
+        return archivements;
+    }
+
+    public void setArchivements(List<Achivements> archivements) {
+        this.archivements = archivements;
+    }
+
+    public List<Platforms> getPlataformas() {
+        return plataformas;
+    }
+
+    public void setPlataformas(List<Platforms> plataformas) {
+        this.plataformas = plataformas;
+    }
+
+    public List<Genres> getGeneros() {
+        return generos;
+    }
+
+    public void setGeneros(List<Genres> generos) {
+        this.generos = generos;
+    }
 }
