@@ -3,8 +3,9 @@ package clasesMapear;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "achievements")
-public class Achivements {
+public class Achievements {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "name")
@@ -15,10 +16,10 @@ public class Achivements {
     @JoinColumn(name = "game_id")
     private Games juego;
 
-    public Achivements() {
+    public Achievements() {
     }
 
-    public Achivements(Integer id, String name, String description, Games juego) {
+    public Achievements(Integer id, String name, String description, Games juego) {
         this.id = id;
         this.name = name;
         this.description = description;

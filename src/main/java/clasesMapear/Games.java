@@ -2,7 +2,6 @@ package clasesMapear;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 import java.util.List;
 @Entity
 @Table(name = "games")
@@ -16,11 +15,11 @@ public class Games {
     @Column(name = "name")
     private String name;
     @Column(name = "released_date")
-    private Date releasedDate;
+    private String releasedDate;
     @Column(name = "rating")
     private Double rating;
     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "juego")
-    private List<Achivements> archivements;
+    private List<Achievements> achievements;
     @ManyToMany(mappedBy = "juegos")
     private List<Platforms> plataformas;
     @ManyToMany(mappedBy = "juegos")
@@ -29,13 +28,13 @@ public class Games {
     public Games() {
     }
 
-    public Games(Integer id, String slug, String name, Date releasedDate, Double rating, List<Achivements> archivements, List<Platforms> plataformas, List<Genres> generos) {
+    public Games(Integer id, String slug, String name, String releasedDate, Double rating, List<Achievements> archivements, List<Platforms> plataformas, List<Genres> generos) {
         this.id = id;
         this.slug = slug;
         this.name = name;
         this.releasedDate = releasedDate;
         this.rating = rating;
-        this.archivements = archivements;
+        this.achievements = archivements;
         this.plataformas = plataformas;
         this.generos = generos;
     }
@@ -64,11 +63,11 @@ public class Games {
         this.name = name;
     }
 
-    public Date getReleasedDate() {
+    public String getReleasedDate() {
         return releasedDate;
     }
 
-    public void setReleasedDate(Date releasedDate) {
+    public void setReleasedDate(String releasedDate) {
         this.releasedDate = releasedDate;
     }
 
@@ -80,12 +79,12 @@ public class Games {
         this.rating = rating;
     }
 
-    public List<Achivements> getArchivements() {
-        return archivements;
+    public List<Achievements> getAchievements() {
+        return achievements;
     }
 
-    public void setArchivements(List<Achivements> archivements) {
-        this.archivements = archivements;
+    public void setAchievements(List<Achievements> achievements) {
+        this.achievements = achievements;
     }
 
     public List<Platforms> getPlataformas() {

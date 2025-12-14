@@ -24,9 +24,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <mapping class="org.example.model.Archivements"/>
-        <mapping class="org.example.model.Genres"/>
-        <mapping class="org.example.model.Games"/>
-        <mapping class="org.example.model.Platforms"/>
+        <mapping class="clasesMapear.Games"/>
+        <mapping class="clasesMapear.Achievements"/>
+        <mapping class="clasesMapear.Genres"/>
+        <mapping class="clasesMapear.Platforms"/>
     </session-factory>
 </hibernate-configuration>

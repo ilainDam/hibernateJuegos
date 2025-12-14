@@ -1,21 +1,21 @@
 package clasesMapear;
 
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 
 import java.util.List;
 @Entity
 @Table(name = "platforms")
 public class Platforms {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
     @Column(name = "name")
-    String name;
-    @ManyToMany()
+    private String name;
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "gameplatforms",
-            joinColumns=@JoinColumn(name = "plaform_id"),
+            joinColumns=@JoinColumn(name = "platform_id"),
             inverseJoinColumns =@JoinColumn(name = "game_id")
     )
     private List<Games> juegos;
